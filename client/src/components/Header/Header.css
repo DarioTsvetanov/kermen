@@ -8,3 +8,11 @@
     height: 75px;
     font-size: 21px;
 }
+
+.nagivation-catalog-link {
+    margin-left: 10%;
+}
+
+.navigation-authentication-links {
+    margin-right: 10%;
+}

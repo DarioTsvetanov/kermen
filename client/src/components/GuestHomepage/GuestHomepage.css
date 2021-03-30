@@ -1,0 +1,10 @@
+.guest-page-div {
+    height: 500px;
+    border-bottom: solid 1px gray;
+}
+
+.guest-page-banner {
+    position: absolute;
+    width: 100%;
+}
+

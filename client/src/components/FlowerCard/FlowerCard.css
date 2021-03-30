@@ -1,4 +1,15 @@
-.flower-card {
-    display: inline-block;  
-    margin: 2rem 2rem 1rem 2rem;
+.flower-card { 
+    margin: 2% 3.5% 2% 3.5%;
+}
+
+.flower-card-link {
+    color: white;
+}
+
+.flower-card-text {
+    height: 47px;
+}
+
+.flower-card-title {
+    height: 25px;
 }
