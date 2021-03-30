@@ -1,18 +1,19 @@
+import { Link } from 'react-router-dom';
+
 import { Navbar, Nav } from 'react-bootstrap';
+import './Header.css';
 
 function Header() {
     return (
-        <Navbar className="justify-content-between" bg="success" sticky="top">
-            <Nav className="ml-5">
-                <Nav.Link href="#features" className="text-white">Catalog</Nav.Link>
-            </Nav>
-            <Navbar.Brand href="#home" className="text-white m-0">Kermen</Navbar.Brand>
+        <Navbar className="justify-content-between navigation-bar" bg="success" sticky="top">
+            <Link className="ml-5 text-white" to="/catalog">Catalog</Link>
+            <Link className="text-white position-absolute navigation-brand" to="/">Kermen</Link>
             <Nav className="text-white mr-5">
-                <Nav.Link href="#Login" className="text-white mr-3">Login</Nav.Link>
-                <Nav.Link href="#Register" className="text-white">Register</Nav.Link>
+                <Link to="/login" className="text-white mr-3">Login</Link>
+                <Link to="/register" className="text-white">Register</Link>
             </Nav>
         </Navbar>
     );
-}   
+}
 
 export default Header;

@@ -1,10 +1,22 @@
-import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import { Switch, Route } from 'react-router-dom';
+
 import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
+
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 function App() {
 	return (
-		<Header/>
+		<>
+			<Header />
+
+			<Switch>
+
+			</Switch>
+
+			<Footer />
+		</>
 	);
 }
 
