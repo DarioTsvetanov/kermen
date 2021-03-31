@@ -1,3 +1,2 @@
 center kermen logo
 create guest home page banner
-conditional sticky footer - className="fixed-bottom"
