@@ -5,8 +5,10 @@ import './Footer.css';
 function Footer() {
     const path = useLocation().pathname;
 
+    const shouldBeSticky = (path === '/register' || path === '/login' || path === '/create') ? true : false;
+
     return (
-        <footer className={(path === '/register' || path === '/login') ? 'fixed-bottom' : null}>
+        <footer className={shouldBeSticky ? 'fixed-bottom' : null}>
             <p>Kermen &copy;</p>
         </footer>
     );

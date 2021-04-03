@@ -22,41 +22,49 @@ const repeatPassword = (repeatPassword, password) => {
         return '';
     }
 
-    return 'Паролите не съвпадат.';
+    return 'Passwords does not match!';
 }
 
-const title = (title) => {
-    if (title.length >= 10 && title.length <= 50) {
+const name = (name) => {
+    if (name.length >= 5 && name.length <= 30) {
         return '';
     }
 
-    return 'Темата трябва да е между 10 и 50 символа.'
+    return 'The name should be between 5 and 30 characters!'
 }
 
 
-const grade = (grade) => {
-    if(grade >= 1 && grade <= 12){
+const price = (price) => {
+    if (price >= 0) {
         return '';
     }
 
-    return 'Изберете клас.';
+    return 'Price should be a positive number';
+}
+
+const imageURL = (imageURL) => {
+    if (imageURL.startsWith('http') || imageURL.startsWith('https')) {
+        return '';
+    }
+
+    return 'Image URl should start with http or https!';
 }
 
 const description = (description) => {
-    if(description.length >= 30){
+    if (description.length >= 30) {
         return '';
     }
 
-    return 'Описанието трябва да е поне 30 символа.';
+    return 'Description should be at least 30 characters!';
 }
 
 const validators = {
     email,
     password,
     repeatPassword,
-    title,
-    grade,
-    description
-
+    name,
+    price,
+    description,
+    imageURL
 };
 export default validators;

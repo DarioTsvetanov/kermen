@@ -5,6 +5,7 @@ import Footer from './components/Footer/Footer';
 import Register from './components/Register/Register';
 import Login from './components/Login/Login';
 import GuestHomepage from './components/GuestHomepage/GuestHomepage';
+import CreateProduct from './components/CreateProduct/CreateProduct';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -18,6 +19,7 @@ function App() {
 				<Route path="/" exact component={GuestHomepage}/>
 				<Route path="/register" exact component={Register}/>
 				<Route path="/login" exact component={Login}/>
+				<Route path="/create" exact component={CreateProduct}/>
 			</Switch>
 			
 			<Footer />

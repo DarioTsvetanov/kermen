@@ -15,12 +15,14 @@ function Login() {
         const password =  e.target.password.value;
 
         if (validators.email(email) !== '') {
-            setErrors((oldState) => [...oldState, validators.email(email)]);
+            setErrors((oldState) => [...oldState, 'email is invalid']);
         }
         
         if (validators.password(password) !== '') {
-            setErrors((oldState) => [...oldState, validators.password(password)]);
+            setErrors((oldState) => [...oldState, 'password is invalid']);
         }
+
+        console.log(errors);
     }
 
     return (
@@ -48,7 +50,8 @@ function Login() {
                     />
                 </Form.Group>
                 {errors.map((x, i) => 
-                    <Alert style={{fontSize: '18px'}} key={i} variant="danger">{x}</Alert>)}
+                    <Alert style={{fontSize: '18px'}} key={i} variant="danger">{x}</Alert>)
+                }
                 <Button
                     variant="primary"
                     type="submit"
