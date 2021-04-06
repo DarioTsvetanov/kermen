@@ -26,7 +26,7 @@ const repeatPassword = (repeatPassword, password) => {
 }
 
 const productName = (productName) => {
-    if (productName.length >= 5 && productName.length <= 30) {
+    if (productName.length >= 5 && productName.length <= 20) {
         return '';
     }
 
@@ -51,7 +51,7 @@ const imageURL = (imageURL) => {
 }
 
 const description = (description) => {
-    if (description.length >= 30) {
+    if (description.length >= 20) {
         return '';
     }
 
