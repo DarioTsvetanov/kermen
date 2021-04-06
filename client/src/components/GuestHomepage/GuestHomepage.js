@@ -12,7 +12,10 @@ function GuestHomepage() {
 
     useEffect(() => {
         flowerService.getAll()
-            .then(result => setFlowers(result.data))
+            .then(x => {
+                let result = x.data.slice(0, 6);
+                setFlowers(result);
+            })
     }, [])
 
     return (

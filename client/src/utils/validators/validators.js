@@ -30,7 +30,7 @@ const productName = (productName) => {
         return '';
     }
 
-    return 'The name should be between 5 and 30 characters!'
+    return 'The name should be between 5 and 20 characters!'
 }
 
 
@@ -55,7 +55,7 @@ const description = (description) => {
         return '';
     }
 
-    return 'Description should be at least 30 characters!';
+    return 'Description should be at least 20 characters!';
 }
 
 const validators = {

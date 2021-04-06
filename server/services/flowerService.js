@@ -11,13 +11,9 @@ const create = async (data, creator) => {
     }
 }
 
-const getAll = async (length) => {
+const getAll = async () => {
     try {
-        let flowers = await Flower.find().lean();
-
-        if (length) flowers.length = length;
-
-        return flowers
+        return await Flower.find().lean();
     }
     catch (error) {
         console.log(error.message);

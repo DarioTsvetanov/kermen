@@ -5,7 +5,7 @@ import './Footer.css';
 function Footer() {
     const path = useLocation().pathname;
 
-    const paths = ['/register', '/login', '/create', '/'];
+    const paths = ['/register', '/login', '/create'];
 
     const shouldBeSticky = (paths.includes(path)) ? true : false;
 
