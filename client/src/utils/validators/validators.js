@@ -25,8 +25,8 @@ const repeatPassword = (repeatPassword, password) => {
     return 'Passwords does not match!';
 }
 
-const name = (name) => {
-    if (name.length >= 5 && name.length <= 30) {
+const productName = (productName) => {
+    if (productName.length >= 5 && productName.length <= 30) {
         return '';
     }
 
@@ -47,7 +47,7 @@ const imageURL = (imageURL) => {
         return '';
     }
 
-    return 'Image URl should start with http or https!';
+    return 'Image URL should start with http or https!';
 }
 
 const description = (description) => {
@@ -62,7 +62,7 @@ const validators = {
     email,
     password,
     repeatPassword,
-    name,
+    productName,
     price,
     description,
     imageURL

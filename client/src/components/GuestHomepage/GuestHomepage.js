@@ -1,10 +1,20 @@
+import { useState, useEffect } from 'react';
+
+import * as flowerService from '../../services/flowerService';
+
 import { Container, Row, Col } from 'react-bootstrap';
+import './GuestHomepage.css';
 
 import FlowerCard from '../FlowerCard/FlowerCard';
 
-import './GuestHomepage.css';
-
 function GuestHomepage() {
+    const [flowers, setFlowers] = useState([]);
+
+    useEffect(() => {
+        flowerService.getAll()
+            .then(result => setFlowers(result.data))
+    }, [])
+
     return (
         <>
             <div className="guest-page-div">
@@ -13,16 +23,7 @@ function GuestHomepage() {
             <Container>
                 <Row>
                     <Col>
-                        <FlowerCard />
-                        <FlowerCard />
-                        <FlowerCard />
-                        <FlowerCard />
-                        <FlowerCard />
-                        <FlowerCard />
-                        <FlowerCard />
-                        <FlowerCard />
-                        <FlowerCard />
-                        <FlowerCard />
+                        {flowers.map(x => <FlowerCard key={x._id} name={x.name} description={x.description} imageURL={x.imageURL} />)}
                     </Col>
                 </Row>
             </Container>

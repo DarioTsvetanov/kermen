@@ -5,7 +5,9 @@ import './Footer.css';
 function Footer() {
     const path = useLocation().pathname;
 
-    const shouldBeSticky = (path === '/register' || path === '/login' || path === '/create') ? true : false;
+    const paths = ['/register', '/login', '/create', '/'];
+
+    const shouldBeSticky = (paths.includes(path)) ? true : false;
 
     return (
         <footer className={shouldBeSticky ? 'fixed-bottom' : null}>

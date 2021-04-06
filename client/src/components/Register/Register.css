@@ -3,3 +3,8 @@
     font-size: 25px;
 }
 
+.register-form-alert {
+    display: none;
+    font-size: 20px;
+}
+

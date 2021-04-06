@@ -1,12 +1,16 @@
+import axios from 'axios';
+
 const url = 'http://localhost:3333';
 
 export const create = (data) => {
-    return fetch(`${url}/create`, {
-        method: 'POST',
-        mode: 'cors',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-    });
+    try {
+        return axios.post(url, data);
+    }
+    catch(e) {
+        console.log(e.message);
+    }
+}
+
+export const getAll = () => {
+    return axios.get(url);
 }

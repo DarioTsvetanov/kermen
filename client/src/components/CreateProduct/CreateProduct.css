@@ -2,3 +2,8 @@
     margin: 100px 200px 100px 200px;
     font-size: 25px;
 }
+
+.create-product-form-alert {
+    display: none;
+    font-size: 20px;
+}
