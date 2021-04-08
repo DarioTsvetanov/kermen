@@ -20,7 +20,17 @@ const getAll = async () => {
     }
 }
 
+const getOne = async (flowerId) => {
+    try {
+        return await Flower.findById(flowerId);
+    }
+    catch(e) {
+        console.log(e.message);
+    }
+}
+
 module.exports = {
     create,
-    getAll
+    getAll,
+    getOne
 }

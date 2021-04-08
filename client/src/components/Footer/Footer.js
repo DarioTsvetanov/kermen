@@ -2,12 +2,15 @@ import { useLocation } from 'react-router-dom';
 
 import './Footer.css';
 
-function Footer() {
+function Footer({
+    match
+}) {
     const path = useLocation().pathname;
 
-    const paths = ['/register', '/login', '/create'];
+    // const paths = ['/register', '/login', '/create'];
+    const paths = ['/'];
 
-    const shouldBeSticky = (paths.includes(path)) ? true : false;
+    const shouldBeSticky = (!paths.includes(path)) ? true : false;
 
     return (
         <footer className={shouldBeSticky ? 'fixed-bottom' : null}>

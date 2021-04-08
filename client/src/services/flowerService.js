@@ -14,3 +14,7 @@ export const create = (data) => {
 export const getAll = () => {
     return axios.get(url);
 }
+
+export const getOne = (id) => {
+    return axios.get(`${url}/flowers/${id}`, { params: { id } });
+};

@@ -13,3 +13,7 @@
 .flower-card-title {
     height: 25px;
 }
+
+.flower-card-details-button :hover {
+    color: white;
+}

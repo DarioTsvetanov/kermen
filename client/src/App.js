@@ -6,6 +6,7 @@ import Register from './components/Register/Register';
 import Login from './components/Login/Login';
 import GuestHomepage from './components/GuestHomepage/GuestHomepage';
 import CreateProduct from './components/CreateProduct/CreateProduct';
+import Details from './components/Details/Details';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -20,6 +21,7 @@ function App() {
 				<Route path="/register" exact component={Register}/>
 				<Route path="/login" exact component={Login}/>
 				<Route path="/create" exact component={CreateProduct}/>
+				<Route path="/flowers/:flowerId/details" exact component={Details}/>
 			</Switch>
 			
 			<Footer />

@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react';
 
 import * as flowerService from '../../services/flowerService';
 
-import { Container, Row, Col } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import { Container, Row, Col, Button } from 'react-bootstrap';
 import './GuestHomepage.css';
 
 import FlowerCard from '../FlowerCard/FlowerCard';
@@ -13,20 +14,34 @@ function GuestHomepage() {
     useEffect(() => {
         flowerService.getAll()
             .then(x => {
-                let result = x.data.slice(0, 6);
+                let result = x.data.reverse().slice(0, 6);
                 setFlowers(result);
             })
     }, [])
 
     return (
         <>
-            <div className="guest-page-div">
-                <h1 className="double-border-text"><i>Kermen</i> your favorite flower shop</h1>
+            <div className="guest-page-div" >
+                <h1 style={{textAlign: 'center', paddingTop: '150px'}}>Register to unlock all the functionalities</h1>
+                <Button>
+                    <Link  to="/register" className="text-white">Register</Link>
+                </Button>
             </div>
             <Container>
                 <Row>
                     <Col>
-                        {flowers.map(x => <FlowerCard key={x._id} name={x.name} description={x.description} imageURL={x.imageURL} />)}
+                        {flowers.map(x => {
+                            const shortenDescription = x.description.slice(0, 60);
+                            const shortenName = x.name.slice(0, 20);
+
+                            return <FlowerCard 
+                            id={x._id}
+                            key={x._id} 
+                            name={shortenName} 
+                            description={shortenDescription} 
+                            imageURL={x.imageURL} 
+                        />
+                        })}
                     </Col>
                 </Row>
             </Container>

@@ -7,7 +7,8 @@ import './FlowerCard.css';
 function FlowerCard({
     imageURL,
     name,
-    description
+    description,
+    id
 }) {
     return (
         <Card style={{ width: '18rem', display: 'inline-block' }} className="flower-card">
@@ -15,8 +16,8 @@ function FlowerCard({
             <Card.Body>
                 <Card.Title className="flower-card-title">{name}</Card.Title>
                 <Card.Text className="flower-card-text" >{description}</Card.Text>
-                <Button variant="primary">
-                    <Link to="" className="flower-card-link">Details</Link>
+                <Button className="flower-card-details-button" variant="primary">
+                    <Link to={`/flowers/${id}/details`} className="flower-card-link">Details</Link>
                 </Button>
             </Card.Body>
         </Card>

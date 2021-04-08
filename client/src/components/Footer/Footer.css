@@ -1,4 +1,5 @@
 footer {
+    margin-top: 50px;
     width: 100%;
     height: 50px;
     background-color: #28A745;
@@ -9,9 +10,5 @@ footer p {
     display: block;
     font-weight: 500;
     color: white;
-    padding-top: 8px;
-}
-
-.sticky-footer {
-    
+    padding-top: 13px;
 }

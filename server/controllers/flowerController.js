@@ -8,7 +8,7 @@ router.post('/', async (req, res) => {
         const flower = await flowerService.create(req.body, 'dario');
         return res.json(flower);
     }
-    catch(e) {
+    catch (e) {
         console.log(e.message);
     }
 });
@@ -16,12 +16,23 @@ router.post('/', async (req, res) => {
 router.get('/', async (req, res) => {
     try {
         const flowers = await flowerService.getAll();
-        console.log(flowers);
+
         return res.json(flowers)
     }
-    catch(e) {
+    catch (e) {
         console.log(e.message);
     }
 })
+
+router.get('/flowers/:flowerId', async (req, res) => {
+    try {
+        const flower = await flowerService.getOne(req.params.flowerId);
+        
+        return res.json(flower);
+    }
+    catch (e) {
+        console.log(e.message);
+    }
+});
 
 module.exports = router;
