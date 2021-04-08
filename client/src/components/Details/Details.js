@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 import * as flowerService from '../../services/flowerService';
 
@@ -26,9 +27,15 @@ function Details({
                     <h3>Description:</h3>
                     <textarea style={{ height: '150px', width: '500px' }} disabled value={flower.description}></textarea>
                     <h3>Price: {flower.price}.00 lv.</h3>
-                    <Button style={{ fontSize: '20px', marginRight: '10px' }}>Edit</Button>
-                    <Button style={{ fontSize: '20px', margin: '10px' }}>Delete</Button>
-                    <Button style={{ fontSize: '20px', margin: '10px' }}>Buy</Button>
+                    <Button style={{ fontSize: '20px', marginRight: '10px' }}>
+                        <Link to={`/flowers/${flower._id}/edit`}>Edit</Link>
+                    </Button>
+                    <Button style={{ fontSize: '20px', marginRight: '10px' }}>
+                        <Link to="/">Delete</Link>
+                    </Button>
+                    <Button style={{ fontSize: '20px', marginRight: '10px' }}>
+                        <Link to="/">Buy</Link>
+                    </Button>
                     <span>People bought: 3</span>
                 </Col>
             </Row>

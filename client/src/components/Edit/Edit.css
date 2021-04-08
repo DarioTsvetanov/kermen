@@ -1,0 +1,9 @@
+.edit-flower-form {
+    margin: 100px 200px 100px 200px;
+    font-size: 25px;
+}
+
+.edit-flower-form-alert {
+    display: none;
+    font-size: 20px;
+}
