@@ -2,9 +2,9 @@ import axios from 'axios';
 
 const url = 'http://localhost:3333';
 
-export const create = (data) => {
+export const create = (flowerData) => {
     try {
-        return axios.post(url, data);
+        return axios.post(url, flowerData);
     }
     catch(e) {
         console.log(e.message);
@@ -18,3 +18,12 @@ export const getAll = () => {
 export const getOne = (id) => {
     return axios.get(`${url}/flowers/${id}`, { params: { id } });
 };
+
+export const update = (flowerId, flowerData) => {
+    try {
+        return axios.post(`${url}/flowers/${flowerId}/edit`, flowerData);
+    }
+    catch(e) {
+        console.log(e.message);
+    }
+}

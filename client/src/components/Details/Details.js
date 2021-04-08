@@ -28,13 +28,13 @@ function Details({
                     <textarea style={{ height: '150px', width: '500px' }} disabled value={flower.description}></textarea>
                     <h3>Price: {flower.price}.00 lv.</h3>
                     <Button style={{ fontSize: '20px', marginRight: '10px' }}>
-                        <Link to={`/flowers/${flower._id}/edit`}>Edit</Link>
+                        <Link style={{color: 'white'}} to={`/flowers/${flower._id}/edit`}>Edit</Link>
                     </Button>
                     <Button style={{ fontSize: '20px', marginRight: '10px' }}>
-                        <Link to="/">Delete</Link>
+                        <Link style={{color: 'white'}} to="/">Delete</Link>
                     </Button>
                     <Button style={{ fontSize: '20px', marginRight: '10px' }}>
-                        <Link to="/">Buy</Link>
+                        <Link style={{color: 'white'}} to="/">Buy</Link>
                     </Button>
                     <span>People bought: 3</span>
                 </Col>

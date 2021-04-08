@@ -29,8 +29,19 @@ const getOne = async (flowerId) => {
     }
 }
 
+const update = async (flowerId, flowerData) => {
+    try {
+        console.log(flowerData);
+        return await Flower.findByIdAndUpdate(flowerId, flowerData);
+    }
+    catch(e) {
+        console.log(e.message);
+    }
+}
+
 module.exports = {
     create,
     getAll,
-    getOne
+    getOne,
+    update
 }

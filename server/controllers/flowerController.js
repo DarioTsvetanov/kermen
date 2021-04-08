@@ -27,7 +27,18 @@ router.get('/', async (req, res) => {
 router.get('/flowers/:flowerId', async (req, res) => {
     try {
         const flower = await flowerService.getOne(req.params.flowerId);
-        
+
+        return res.json(flower);
+    }
+    catch (e) {
+        console.log(e.message);
+    }
+});
+
+router.post('/flowers/:flowerId/edit', async (req, res) => {
+    try {
+        const flower = await flowerService.update(req.params.flowerId, req.body);
+
         return res.json(flower);
     }
     catch (e) {
