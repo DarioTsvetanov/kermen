@@ -1,4 +1,8 @@
-import { Switch, Route } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+
+import { Switch, Route, Redirect } from 'react-router-dom';
+import AuthContext from './contexts/AuthContext';
+import { auth } from './utils/firebase';
 
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
@@ -13,20 +17,37 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 function App() {
+	const [user, setUser] = useState(null);
+
+	useEffect(() => {
+		auth.onAuthStateChanged((setUser))
+	}, []);
+
+	const authInfo = {
+		isAuthenticated: Boolean(user),
+		username: user?.email
+	}
+
 	return (
 		<>
-			<Header />
+			<AuthContext.Provider value={authInfo}>
+				<Header />
 
-			<Switch>
-				<Route path="/" exact component={GuestHomepage} />
-				<Route path="/register" exact component={Register} />
-				<Route path="/login" exact component={Login} />
-				<Route path="/create" exact component={CreateProduct} />
-				<Route path="/flowers/:flowerId/details" exact component={Details} />
-				<Route path="/flowers/:flowerId/edit" exact component={Edit} />
-			</Switch>
+				<Switch>
+					<Route path="/" exact component={GuestHomepage} />
+					<Route path="/register" exact component={Register} />
+					<Route path="/login" exact component={Login} />
+					<Route path="/create" exact component={CreateProduct} />
+					<Route path="/flowers/:flowerId/details" exact component={Details} />
+					<Route path="/flowers/:flowerId/edit" exact component={Edit} />
+					<Route path="/logout" render={(props) => {
+						auth.signOut();
+						return <Redirect to="/" />
+					}} />
+				</Switch>
+				<Footer />
 
-			<Footer />
+			</AuthContext.Provider>
 		</>
 	);
 }
