@@ -21,7 +21,8 @@ function Register({
         repeatPassword: {
             message: '',
             touched: false
-        }
+        },
+        firebase: ''
     });
 
     const [formData, setFormData] = useState({
@@ -39,7 +40,19 @@ function Register({
 
         auth.createUserWithEmailAndPassword(formData.email, formData.password)
             .then(() => history.push('/'))
-            .catch((e) => console.log(e.message))
+            .catch((error) => {
+                switch (error.code) {
+                    case 'auth/email-already-in-use':
+                        setErrors(oldState => ({...oldState, firebase: 'Email address already in use.'}));
+                        break;
+                    case 'auth/operation-not-allowed':
+                        setErrors(oldState => ({...oldState, firebase: 'Error during sign up.'}));
+                        break;
+                    default:
+                        console.log(error.message);
+                        break;
+                }
+            })
     }
 
     const onRegisterFormChangeHandler = (e) => {
@@ -137,6 +150,13 @@ function Register({
                 <Button variant="primary" type="submit" style={{ fontSize: '20px' }}>
                     Register
                 </Button>
+                <Alert
+                    variant="danger"
+                    style={{ fontSize: '18px' }}
+                    className={errors.firebase !== '' ? null : 'register-form-alert'}
+                >
+                    {errors.firebase}
+                </Alert>
             </Form>
         </Container>
     );

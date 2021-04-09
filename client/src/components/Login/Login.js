@@ -1,11 +1,14 @@
 import { useState } from 'react';
 
 import validators from '../../utils/validators/validators';
+import { auth } from '../../utils/firebase';
 
 import './Login.css';
 import { Form, Button, Container, Alert } from 'react-bootstrap';
 
-function Login() {
+function Login({
+    history
+}) {
     const [errors, setErrors] = useState({
         email: {
             message: '',
@@ -14,7 +17,8 @@ function Login() {
         password: {
             message: '',
             touched: false
-        }
+        },
+        firebase: ''
     });
 
     const [formData, setFormData] = useState({
@@ -26,9 +30,23 @@ function Login() {
         e.preventDefault();
 
         if (errors.email.message !== '' || errors.email.touched === false ||
-            errors.password.message !== '' || errors.password.touched === false ) return;
+            errors.password.message !== '' || errors.password.touched === false) return;
 
-        console.log('success');
+        auth.signInWithEmailAndPassword(formData.email, formData.password)
+            .then(() => history.push('/'))
+            .catch(error => {
+                switch (error.code) {
+                    case 'auth/user-not-found':
+                        setErrors(oldState => ({ ...oldState, firebase: 'Account with this email does not exist!' }));
+                        break;
+                    case 'auth/wrong-password':
+                        setErrors(oldState => ({ ...oldState, firebase: 'Wrong password!' }));
+                        break;
+                    default:
+                        console.log(error.message);
+                        break;
+                }
+            });
     }
 
     const onLoginFormChangeHandler = (e) => {
@@ -103,6 +121,13 @@ function Login() {
                 >
                     Login
                 </Button>
+                <Alert
+                    variant="danger"
+                    style={{ fontSize: '18px' }}
+                    className={errors.firebase !== '' ? null : 'login-form-alert'}
+                >
+                    {errors.firebase}
+                </Alert>
             </Form>
         </Container>
     );
