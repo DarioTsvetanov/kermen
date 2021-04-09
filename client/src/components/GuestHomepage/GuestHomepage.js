@@ -22,10 +22,15 @@ function GuestHomepage() {
     return (
         <>
             <div className="guest-page-div" >
-                <h1 style={{textAlign: 'center', paddingTop: '150px'}}>Register to unlock all the functionalities</h1>
-                <Button>
-                    <Link  to="/register" className="text-white">Register</Link>
-                </Button>
+                <h1 style={{ textAlign: 'center', paddingTop: '150px' }}>Register or Log In to see our garden full of flowers!</h1>
+                <Container style={{ display: 'flex', justifyContent: 'center', gap: '20px'}}>
+                    <Button style={{fontSize: '20px'}}>
+                        <Link to="/register" className="text-white">Register</Link>
+                    </Button>
+                    <Button style={{fontSize: '20px'}}>
+                        <Link to="/login" className="text-white">Login</Link>
+                    </Button>
+                </Container>
             </div>
             <Container>
                 <Row>
@@ -34,13 +39,13 @@ function GuestHomepage() {
                             const shortenDescription = x.description.slice(0, 60);
                             const shortenName = x.name.slice(0, 20);
 
-                            return <FlowerCard 
-                            id={x._id}
-                            key={x._id} 
-                            name={shortenName} 
-                            description={shortenDescription} 
-                            imageURL={x.imageURL} 
-                        />
+                            return <FlowerCard
+                                id={x._id}
+                                key={x._id}
+                                name={shortenName}
+                                description={shortenDescription}
+                                imageURL={x.imageURL}
+                            />
                         })}
                     </Col>
                 </Row>
