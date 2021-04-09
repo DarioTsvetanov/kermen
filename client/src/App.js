@@ -18,14 +18,14 @@ function App() {
 			<Header />
 
 			<Switch>
-				<Route path="/" exact component={GuestHomepage}/>
-				<Route path="/register" exact component={Register}/>
-				<Route path="/login" exact component={Login}/>
-				<Route path="/create" exact component={CreateProduct}/>
-				<Route path="/flowers/:flowerId/details" exact component={Details}/>
-				<Route path="/flowers/:flowerId/edit" exact component={Edit}/>
+				<Route path="/" exact component={GuestHomepage} />
+				<Route path="/register" exact component={Register} />
+				<Route path="/login" exact component={Login} />
+				<Route path="/create" exact component={CreateProduct} />
+				<Route path="/flowers/:flowerId/details" exact component={Details} />
+				<Route path="/flowers/:flowerId/edit" exact component={Edit} />
 			</Switch>
-			
+
 			<Footer />
 		</>
 	);

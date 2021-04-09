@@ -46,4 +46,14 @@ router.post('/flowers/:flowerId/edit', async (req, res) => {
     }
 });
 
+router.delete('/flowers/:flowerId/delete', async (req, res) => {
+    try {
+        const flower = await flowerService.deleteFlower(req.params.flowerId);
+        return res.json(flower);
+    }
+    catch (e) {
+        console.log(e.message);
+    }
+});
+
 module.exports = router;

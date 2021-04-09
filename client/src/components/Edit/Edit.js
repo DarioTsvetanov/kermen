@@ -13,19 +13,19 @@ function Edit({
     const [errors, setErrors] = useState({
         productName: {
             message: '',
-            touched: ''
+            touched: false
         },
         price: {
             message: '',
-            touched: ''
+            touched: false
         },
         imageURL: {
             message: '',
-            touched: ''
+            touched: false
         },
         description: {
             message: '',
-            touched: ''
+            touched: false
         },
     });
 
@@ -42,7 +42,7 @@ function Edit({
                 const { name, price, imageURL, description } = res.data;
                 return setFlower({ name, price, imageURL, description });
             })
-    }, [])
+    }, [match.params.flowerId])
 
     const onFieldValueChangeHandler = (e) => {
         e.preventDefault();

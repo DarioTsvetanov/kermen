@@ -27,3 +27,15 @@ export const update = (flowerId, flowerData) => {
         console.log(e.message);
     }
 }
+
+export const deleteFlower = async (flowerId) => {
+    try {
+        return fetch(`${url}/flowers/${flowerId}/delete`, {
+            method: 'DELETE',
+        })
+    }
+    catch(e) {
+        console.log(e.message);
+    }
+}
+

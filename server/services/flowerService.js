@@ -31,7 +31,6 @@ const getOne = async (flowerId) => {
 
 const update = async (flowerId, flowerData) => {
     try {
-        console.log(flowerData);
         return await Flower.findByIdAndUpdate(flowerId, flowerData);
     }
     catch(e) {
@@ -39,9 +38,19 @@ const update = async (flowerId, flowerData) => {
     }
 }
 
+const deleteFlower = async (flowerId) => {
+    try {
+        return Flower.findByIdAndDelete(flowerId);
+    }
+    catch(e) {
+        console.log(e.message + 'in BE delete flower service');
+    }
+}
+
 module.exports = {
     create,
     getAll,
     getOne,
-    update
+    update,
+    deleteFlower
 }

@@ -7,7 +7,8 @@ import './Details.css';
 import { Container, Row, Col, Image, Button } from 'react-bootstrap';
 
 function Details({
-    match
+    match,
+    history
 }) {
     const [flower, setFlower] = useState({});
 
@@ -15,6 +16,11 @@ function Details({
         flowerService.getOne(match.params.flowerId)
             .then(res => setFlower(res.data))
     }, [match.params.flowerId])
+
+    const deleteFlower = () => {
+        flowerService.deleteFlower(match.params.flowerId)
+            .then(() => history.push('/'))
+    }
 
     return (
         <Container className="flower-details-container">
@@ -28,13 +34,13 @@ function Details({
                     <textarea style={{ height: '150px', width: '500px' }} disabled value={flower.description}></textarea>
                     <h3>Price: {flower.price}.00 lv.</h3>
                     <Button style={{ fontSize: '20px', marginRight: '10px' }}>
-                        <Link style={{color: 'white'}} to={`/flowers/${flower._id}/edit`}>Edit</Link>
+                        <Link style={{ color: 'white' }} to={`/flowers/${flower._id}/edit`}>Edit</Link>
+                    </Button>
+                    <Button style={{ fontSize: '20px', marginRight: '10px' }} onClick={deleteFlower}>
+                        <Link style={{ color: 'white' }} to={`/flowers/${flower._id}/delete`}>Delete</Link>
                     </Button>
                     <Button style={{ fontSize: '20px', marginRight: '10px' }}>
-                        <Link style={{color: 'white'}} to="/">Delete</Link>
-                    </Button>
-                    <Button style={{ fontSize: '20px', marginRight: '10px' }}>
-                        <Link style={{color: 'white'}} to="/">Buy</Link>
+                        <Link style={{ color: 'white' }} to="/">Buy</Link>
                     </Button>
                     <span>People bought: 3</span>
                 </Col>

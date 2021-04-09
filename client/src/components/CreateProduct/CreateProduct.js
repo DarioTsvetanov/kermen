@@ -12,19 +12,19 @@ function CreateProduct({
     const [errors, setErrors] = useState({
         productName: {
             message: '',
-            touched: ''
+            touched: false
         },
         price: {
             message: '',
-            touched: ''
+            touched: false
         },
         imageURL: {
             message: '',
-            touched: ''
+            touched: false
         },
         description: {
             message: '',
-            touched: ''
+            touched: false
         },
     });
 
