@@ -1,11 +1,14 @@
 import { useState } from 'react';
 
 import validators from '../../utils/validators/validators';
+import { auth } from '../../utils/firebase';
 
 import './Register.css';
 import { Form, Button, Container, Alert } from 'react-bootstrap';
 
-function Register() {
+function Register({
+    history
+}) {
     const [errors, setErrors] = useState({
         email: {
             message: '',
@@ -34,7 +37,9 @@ function Register() {
             errors.password.message !== '' || errors.password.touched === false ||
             errors.repeatPassword.message !== '' || errors.repeatPassword.touched === false) return;
 
-        console.log('success');
+        auth.createUserWithEmailAndPassword(formData.email, formData.password)
+            .then(() => history.push('/'))
+            .catch((e) => console.log(e.message))
     }
 
     const onRegisterFormChangeHandler = (e) => {
@@ -81,7 +86,7 @@ function Register() {
                         placeholder="Enter your email address"
                         name="email"
                         id="email"
-                        onBlur={onRegisterFormChangeHandler}
+                        onChange={onRegisterFormChangeHandler}
                     />
                     <Alert
                         variant="danger"
@@ -100,7 +105,7 @@ function Register() {
                         placeholder="Enter your password"
                         name="password"
                         id="password"
-                        onBlur={onRegisterFormChangeHandler}
+                        onChange={onRegisterFormChangeHandler}
                     />
                     <Alert
                         variant="danger"
@@ -119,7 +124,7 @@ function Register() {
                         placeholder="Repeat your password"
                         name="repeatPassword"
                         id="repeatPassword"
-                        onBlur={onRegisterFormChangeHandler}
+                        onChange={onRegisterFormChangeHandler}
                     />
                     <Alert
                         variant="danger"

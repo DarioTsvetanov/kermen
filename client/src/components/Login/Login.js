@@ -66,7 +66,7 @@ function Login() {
                         placeholder="Enter your email address"
                         name="email"
                         id="email"
-                        onBlur={onLoginFormChangeHandler}
+                        onChange={onLoginFormChangeHandler}
                     />
                     <Alert
                         style={{ fontSize: '18px' }}
@@ -86,7 +86,7 @@ function Login() {
                         placeholder="Enter your password"
                         name="password"
                         id="password"
-                        onBlur={onLoginFormChangeHandler}
+                        onChange={onLoginFormChangeHandler}
                     />
                     <Alert
                         variant="danger"
