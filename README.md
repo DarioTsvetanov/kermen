@@ -28,7 +28,7 @@ There is only one model - "Flower" model. The service is connected to could data
 To run the server you need to open the server folder and run:
 ```
 npm install
-npm start
+npm run dev
 ```
 
 To run the client you need to open the client folder and run:
