@@ -110,7 +110,7 @@ function Edit({
                 <Form.Group>
                     <Form.Label>Name:</Form.Label>
                     <Form.Control
-                        onBlur={onFieldValueChangeHandler}
+                        onChange={onFieldValueChangeHandler}
                         type="text"
                         name="name"
                         id="name"
@@ -146,7 +146,7 @@ function Edit({
                 <Form.Group>
                     <Form.Label>Image URL:</Form.Label>
                     <Form.Control
-                        onBlur={onFieldValueChangeHandler}
+                        onChange={onFieldValueChangeHandler}
                         type="text"
                         defaultValue={flower.imageURL}
                         name="imageURL"

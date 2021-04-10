@@ -11,13 +11,19 @@ function Details({
     match,
     history
 }) {
-    const [flower, setFlower] = useState({});
+    const [flower, setFlower] = useState({
+        peopleBought: []
+    });
     const { username } = useContext(AuthContext)
 
     useEffect(() => {
         flowerService.getOne(match.params.flowerId)
-            .then(res => setFlower(res.data))
-    })  
+            .then(res => {
+                return setFlower(res.data);
+            })
+
+        return () => { setFlower({}) }
+    }, [match.params.flowerId, username])
 
     const deleteFlower = () => {
         flowerService.deleteFlower(match.params.flowerId)
@@ -29,24 +35,23 @@ function Details({
     }
 
     const buyFlower = () => {
-        return flowerService.update(match.params.flowerId, { ...flower, isBought: true, peopleBought: flower.peopleBought + 1 })
-            .then(() => {
-                history.push(`/flowers/${match.params.flowerId}/details`);
+        let buyers = flower.peopleBought.slice();
+        buyers.push(username);
 
-                return null;
-            })
+        return flowerService.update(match.params.flowerId, { ...flower, peopleBought: buyers })
+            .then(() => setFlower({...flower, peopleBought: buyers}))
     }
 
     return (
         <Container className="flower-details-container">
-            <p style={{ textAlign: 'center', marginBottom: '20px', fontSize: '50px' }}>{flower.name}</p>
+            <p style={{ textAlign: 'center', marginBottom: '20px', fontSize: '45px' }}>{flower.name}</p>
             <Row>
-                <Col style={{ height: '400px', width: '400px' }}>
+                <Col style={{ height: '300px', width: '300px' }}>
                     <Image fluid thumbnail src={flower.imageURL} />
                 </Col>
-                <Col style={{ fontSize: '25px' }}>
+                <Col style={{ fontSize: '18px' }}>
                     <h3>Description:</h3>
-                    <textarea style={{ height: '150px', width: '500px' }} disabled value={flower.description}></textarea>
+                    <textarea style={{ height: '120px', width: '400px' }} disabled value={flower.description}></textarea>
                     <h3>Price: {flower.price}.00 lv.</h3>
                     {username === flower.creator ?
                         <>
@@ -58,8 +63,8 @@ function Details({
                             </Button>
                         </> :
                         <>
-                            {flower.isBought ?
-                                <span>People bought: {flower.peopleBought}</span> :
+                            {flower.peopleBought.includes(username) ?
+                                <span>Bought times: {flower.peopleBought.length}</span> :
                                 <Button style={{ fontSize: '20px', marginRight: '10px' }} onClick={buyFlower}>
                                     Buy
                                 </Button>

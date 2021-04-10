@@ -52,7 +52,8 @@ function CreateProduct({
             price: formData.price,
             imageURL: formData.imageURL,
             description: formData.description,
-            creator: username
+            creator: username,
+            peopleBought: []
         }
 
         flowerService.create(flowerData)
@@ -113,7 +114,7 @@ function CreateProduct({
                 <Form.Group>
                     <Form.Label>Name:</Form.Label>
                     <Form.Control
-                        onBlur={onFieldValueChangeHandler}
+                        onChange={onFieldValueChangeHandler}
                         type="text"
                         placeholder="Enter flower name"
                         name="name"
@@ -131,7 +132,7 @@ function CreateProduct({
                 <Form.Group>
                     <Form.Label>Price:</Form.Label>
                     <Form.Control
-                        onBlur={onFieldValueChangeHandler}
+                        onChange={onFieldValueChangeHandler}
                         type="number"
                         placeholder="Enter flower price"
                         name="price"
@@ -149,7 +150,7 @@ function CreateProduct({
                 <Form.Group>
                     <Form.Label>Image URL:</Form.Label>
                     <Form.Control
-                        onBlur={onFieldValueChangeHandler}
+                        onChange={onFieldValueChangeHandler}
                         type="text"
                         placeholder="Enter image URL"
                         name="imageURL"

@@ -11,8 +11,8 @@ function FlowerCard({
     id
 }) {
     return (
-        <Card style={{ width: '18rem', display: 'inline-block' }} className="flower-card">
-            <Card.Img style={{ width: '286px', height: '190px' }} className="flower-card-image" variant="top" src={imageURL} />
+        <Card style={{ width: '17rem', display: 'inline-block' }} className="flower-card">
+            <Card.Img style={{ width: '270px', height: '190px' }} className="flower-card-image" variant="top" src={imageURL} />
             <Card.Body>
                 <Card.Title className="flower-card-title">{name}</Card.Title>
                 <Card.Text className="flower-card-text" >{description}</Card.Text>

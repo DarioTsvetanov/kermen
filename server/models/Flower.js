@@ -20,10 +20,6 @@ const flowerSchema = new mongoose.Schema({
     },
     peopleBought: {
         type: Array,
-    },
-    timesBought: {
-        type: Number,
-        default: 0
     }
 });
 
