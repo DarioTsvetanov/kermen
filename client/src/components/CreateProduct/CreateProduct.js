@@ -56,7 +56,11 @@ function CreateProduct({
         }
 
         flowerService.create(flowerData)
-            .then(() => history.push('/'))
+            .then(() => {
+                history.push('/');
+
+                return null;
+            })
     }
 
     const onFieldValueChangeHandler = (e) => {

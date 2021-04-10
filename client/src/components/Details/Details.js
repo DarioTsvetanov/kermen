@@ -21,12 +21,20 @@ function Details({
 
     const deleteFlower = () => {
         flowerService.deleteFlower(match.params.flowerId)
-            .then(() => history.push('/'))
+            .then(() => {
+                history.push('/');
+
+                return null;
+            })
     }
 
     const buyFlower = () => {
         return flowerService.update(match.params.flowerId, { ...flower, isBought: true, peopleBought: flower.peopleBought + 1 })
-            .then(() => history.push(`/flowers/${match.params.flowerId}/details`))
+            .then(() => {
+                history.push(`/flowers/${match.params.flowerId}/details`);
+
+                return null;
+            })
     }
 
     return (

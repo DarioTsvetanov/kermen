@@ -97,7 +97,11 @@ function Edit({
             errors.description.message !== '' || errors.description.touched === false) return;
 
         flowerService.update(match.params.flowerId, flower)
-            .then(() => history.push('/'))
+            .then(() => {
+                history.push('/');
+
+                return null;
+            })
     }
 
     return (

@@ -33,7 +33,11 @@ function Login({
             errors.password.message !== '' || errors.password.touched === false) return;
 
         auth.signInWithEmailAndPassword(formData.email, formData.password)
-            .then(() => history.push('/'))
+            .then(() => {
+                history.push('/');
+
+                return null;
+            })
             .catch(error => {
                 switch (error.code) {
                     case 'auth/user-not-found':

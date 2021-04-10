@@ -39,7 +39,11 @@ function Register({
             errors.repeatPassword.message !== '' || errors.repeatPassword.touched === false) return;
 
         auth.createUserWithEmailAndPassword(formData.email, formData.password)
-            .then(() => history.push('/'))
+            .then(() => {
+                history.push('/');
+
+                return null;
+            })
             .catch((error) => {
                 switch (error.code) {
                     case 'auth/email-already-in-use':

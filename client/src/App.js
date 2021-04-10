@@ -3,6 +3,8 @@ import { useState, useEffect } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import AuthContext from './contexts/AuthContext';
 import { auth } from './utils/firebase';
+import isAuth from './hoc/isAuth';
+import isGuest from './hoc/isGuest';
 
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
@@ -37,13 +39,13 @@ function App() {
 
 				<Switch>
 					<Route path="/" exact component={authInfo.isAuthenticated ? Homepage : GuestHomepage} />
-					<Route path="/register" exact component={Register} />
-					<Route path="/login" exact component={Login} />
-					<Route path="/my-flowers" exact component={MyFlowers} />
-					<Route path="/create" exact component={CreateProduct} />
-					<Route path="/flowers/:flowerId/details" exact component={Details} />
-					<Route path="/flowers/:flowerId/edit" exact component={Edit} />
-					<Route path="/logout" render={(props) => {
+					<Route path="/register" exact component={isGuest(Register)} />
+					<Route path="/login" exact component={isGuest(Login)} />
+					<Route path="/my-flowers" exact component={isAuth(MyFlowers)} />
+					<Route path="/create" exact component={isAuth(CreateProduct)} />
+					<Route path="/flowers/:flowerId/details" exact component={isAuth(Details)} />
+					<Route path="/flowers/:flowerId/edit" exact component={isAuth(Edit)} />
+					<Route path="/logout" render={() => {
 						auth.signOut();
 						return <Redirect to="/" />
 					}} />
