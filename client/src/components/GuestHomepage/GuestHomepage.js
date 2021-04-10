@@ -1,5 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 
+import AuthContext from '../../contexts/AuthContext';
 import * as flowerService from '../../services/flowerService';
 
 import { Link } from 'react-router-dom';
@@ -10,6 +11,7 @@ import FlowerCard from '../FlowerCard/FlowerCard';
 
 function GuestHomepage() {
     const [flowers, setFlowers] = useState([]);
+    const { isAuthenticated, username } = useContext(AuthContext);
 
     useEffect(() => {
         flowerService.getAll()
@@ -21,17 +23,20 @@ function GuestHomepage() {
 
     return (
         <>
-            <div className="guest-page-div" >
-                <h1 style={{ textAlign: 'center', paddingTop: '150px' }}>Register or Log In to see our garden full of flowers!</h1>
-                <Container style={{ display: 'flex', justifyContent: 'center', gap: '20px'}}>
-                    <Button style={{fontSize: '20px'}}>
-                        <Link to="/register" className="text-white">Register</Link>
-                    </Button>
-                    <Button style={{fontSize: '20px'}}>
-                        <Link to="/login" className="text-white">Login</Link>
-                    </Button>
-                </Container>
-            </div>
+            { !isAuthenticated ? 
+                <div className="guest-page-div" >
+                    <h1 style={{ textAlign: 'center', paddingTop: '150px' }}>Register or Log In to see our garden full of flowers!</h1>
+                    <Container style={{ display: 'flex', justifyContent: 'center', gap: '20px' }}>
+                        <Button style={{ fontSize: '20px' }}>
+                            <Link to="/register" className="text-white">Register</Link>
+                        </Button>
+                        <Button style={{ fontSize: '20px' }}>
+                            <Link to="/login" className="text-white">Login</Link>
+                        </Button>
+                    </Container>
+                </div> :
+                null
+            }
             <Container>
                 <Row>
                     <Col>
