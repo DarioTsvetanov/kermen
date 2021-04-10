@@ -13,7 +13,11 @@ When authenticated the user can watch all adds; create one; open details page of
 
 In the My Flowers page the user can open all the adds he created.
 
+The client is hosted in firebase.com
+
 ## Server
+
+The server is hosted in heroku.com
 
 Every server route is written in REST standart. There is only one "flower controller" with his "flower service".
 
