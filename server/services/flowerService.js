@@ -13,8 +13,11 @@ const create = async (data) => {
 
 const getAll = async (currentUser) => {
     try {
-        if (currentUser) return await Flower.find({ creator: currentUser }).lean();
-        else return await Flower.find().lean();
+        let flowers = [];
+        if (currentUser) flowers = await Flower.find({ creator: currentUser }).lean();
+        else flowers = await Flower.find().lean();
+
+        return flowers;
     }
     catch (error) {
         console.log(error.message);
