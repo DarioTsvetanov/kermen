@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const url = 'http://localhost:3333';
+const url = 'https://kermen.herokuapp.com';
 
 export const create = (flowerData) => {
     try {
