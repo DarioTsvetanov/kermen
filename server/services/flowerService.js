@@ -11,9 +11,10 @@ const create = async (data) => {
     }
 }
 
-const getAll = async () => {
+const getAll = async (currentUser) => {
     try {
-        return await Flower.find().lean();
+        if (currentUser) return await Flower.find({ creator: currentUser }).lean();
+        else return await Flower.find().lean();
     }
     catch (error) {
         console.log(error.message);
@@ -24,7 +25,7 @@ const getOne = async (flowerId) => {
     try {
         return await Flower.findById(flowerId);
     }
-    catch(e) {
+    catch (e) {
         console.log(e.message);
     }
 }
@@ -33,7 +34,7 @@ const update = async (flowerId, flowerData) => {
     try {
         return await Flower.findByIdAndUpdate(flowerId, flowerData);
     }
-    catch(e) {
+    catch (e) {
         console.log(e.message);
     }
 }
@@ -42,7 +43,7 @@ const deleteFlower = async (flowerId) => {
     try {
         return Flower.findByIdAndDelete(flowerId);
     }
-    catch(e) {
+    catch (e) {
         console.log(e.message + 'in BE delete flower service');
     }
 }

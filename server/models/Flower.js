@@ -17,6 +17,14 @@ const flowerSchema = new mongoose.Schema({
     },
     creator: {
         type: String
+    },
+    isBought: {
+        type: Boolean,
+        default: false
+    },
+    peopleBought: {
+        type: Number,
+        default: 0
     }
 });
 

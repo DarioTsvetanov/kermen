@@ -16,15 +16,17 @@ function Details({
 
     useEffect(() => {
         flowerService.getOne(match.params.flowerId)
-            .then(res => {
-                console.log(res.data);
-                return setFlower(res.data)
-            })
-    }, [match.params.flowerId])
+            .then(res => setFlower(res.data))
+    })  
 
     const deleteFlower = () => {
         flowerService.deleteFlower(match.params.flowerId)
             .then(() => history.push('/'))
+    }
+
+    const buyFlower = () => {
+        return flowerService.update(match.params.flowerId, { ...flower, isBought: true, peopleBought: flower.peopleBought + 1 })
+            .then(() => history.push(`/flowers/${match.params.flowerId}/details`))
     }
 
     return (
@@ -48,10 +50,12 @@ function Details({
                             </Button>
                         </> :
                         <>
-                            <Button style={{ fontSize: '20px', marginRight: '10px' }}>
-                                <Link style={{ color: 'white' }} to="/">Buy</Link>
-                            </Button>
-                            <span>People bought: 3</span>
+                            {flower.isBought ?
+                                <span>People bought: {flower.peopleBought}</span> :
+                                <Button style={{ fontSize: '20px', marginRight: '10px' }} onClick={buyFlower}>
+                                    Buy
+                                </Button>
+                            }
                         </>
                     }
                 </Col>

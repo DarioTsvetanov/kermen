@@ -6,7 +6,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 
 import FlowerCard from '../FlowerCard/FlowerCard';
 
-function GuestHomepage() {
+function Homepage() {
     const [flowers, setFlowers] = useState([]);
 
     useEffect(() => {
@@ -39,4 +39,4 @@ function GuestHomepage() {
     );
 }
 
-export default GuestHomepage;
+export default Homepage;

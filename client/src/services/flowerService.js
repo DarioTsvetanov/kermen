@@ -11,8 +11,8 @@ export const create = (flowerData) => {
     }
 }
 
-export const getAll = () => {
-    return axios.get(url);
+export const getAll = (currentUser) => {
+    return axios.get(url, { params: { currentUser } });
 }
 
 export const getOne = (id) => {

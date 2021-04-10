@@ -9,6 +9,7 @@ import Footer from './components/Footer/Footer';
 import Register from './components/Register/Register';
 import Login from './components/Login/Login';
 import Homepage from './components/Homepage/Homepage';
+import MyFlowers from './components/MyFlowers/MyFlowers';
 import GuestHomepage from './components/GuestHomepage/GuestHomepage';
 import CreateProduct from './components/CreateProduct/CreateProduct';
 import Details from './components/Details/Details';
@@ -38,6 +39,7 @@ function App() {
 					<Route path="/" exact component={authInfo.isAuthenticated ? Homepage : GuestHomepage} />
 					<Route path="/register" exact component={Register} />
 					<Route path="/login" exact component={Login} />
+					<Route path="/my-flowers" exact component={MyFlowers} />
 					<Route path="/create" exact component={CreateProduct} />
 					<Route path="/flowers/:flowerId/details" exact component={Details} />
 					<Route path="/flowers/:flowerId/edit" exact component={Edit} />

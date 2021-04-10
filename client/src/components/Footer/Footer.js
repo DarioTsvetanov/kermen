@@ -1,19 +1,8 @@
-import { useLocation } from 'react-router-dom';
-
 import './Footer.css';
 
-function Footer({
-    match
-}) {
-    const path = useLocation().pathname;
-
-    // const paths = ['/register', '/login', '/create'];
-    const paths = ['/'];
-
-    const shouldBeSticky = (!paths.includes(path)) ? true : false;
-
+function Footer() {
     return (
-        <footer className={shouldBeSticky ? 'fixed-bottom' : null}>
+        <footer className="fixed-bottom">
             <p>Kermen &copy;</p>
         </footer>
     );

@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from 'react';
+import { useState, useEffect } from 'react';
 
 import * as flowerService from '../../services/flowerService';
 
@@ -12,11 +12,15 @@ function GuestHomepage() {
     const [flowers, setFlowers] = useState([]);
 
     useEffect(() => {
+        let isMounted = true;
+
         flowerService.getAll()
             .then(x => {
                 let result = x.data.reverse().slice(0, 6);
-                setFlowers(result);
+                if (isMounted) setFlowers(result);
             })
+
+        return () => { isMounted = false }
     }, [])
 
     return (

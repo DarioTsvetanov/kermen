@@ -15,7 +15,7 @@ router.post('/', async (req, res) => {
 
 router.get('/', async (req, res) => {
     try {
-        const flowers = await flowerService.getAll();
+        const flowers = await flowerService.getAll(req.query.currentUser);
 
         return res.json(flowers)
     }
