@@ -5,7 +5,7 @@ const flowerService = require('../services/flowerService');
 
 router.post('/', async (req, res) => {
     try {
-        const flower = await flowerService.create(req.body, 'dario');
+        const flower = await flowerService.create(req.body);
         return res.json(flower);
     }
     catch (e) {

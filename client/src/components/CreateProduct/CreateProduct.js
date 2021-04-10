@@ -1,4 +1,6 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+
+import AuthContext from '../../contexts/AuthContext';
 
 import validators from '../../utils/validators/validators';
 import * as flowerService from '../../services/flowerService';
@@ -35,6 +37,8 @@ function CreateProduct({
         description: ''
     });
 
+    const {username} = useContext(AuthContext);
+
     const onCreateProductSubmitHandler = (e) => {
         e.preventDefault();
 
@@ -48,6 +52,7 @@ function CreateProduct({
             price: formData.price,
             imageURL: formData.imageURL,
             description: formData.description,
+            creator: username
         }
 
         flowerService.create(flowerData)

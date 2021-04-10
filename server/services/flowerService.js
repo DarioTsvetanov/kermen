@@ -1,8 +1,8 @@
 const Flower = require('../models/Flower');
 
-const create = async (data, creator) => {
+const create = async (data) => {
     try {
-        const flower = new Flower({ ...data, creator });
+        const flower = new Flower(data);
 
         return await flower.save();
     }

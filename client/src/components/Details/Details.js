@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 
+import AuthContext from '../../contexts/AuthContext';
 import * as flowerService from '../../services/flowerService';
 
 import './Details.css';
@@ -11,10 +12,14 @@ function Details({
     history
 }) {
     const [flower, setFlower] = useState({});
+    const { username } = useContext(AuthContext)
 
     useEffect(() => {
         flowerService.getOne(match.params.flowerId)
-            .then(res => setFlower(res.data))
+            .then(res => {
+                console.log(res.data);
+                return setFlower(res.data)
+            })
     }, [match.params.flowerId])
 
     const deleteFlower = () => {
@@ -33,16 +38,22 @@ function Details({
                     <h3>Description:</h3>
                     <textarea style={{ height: '150px', width: '500px' }} disabled value={flower.description}></textarea>
                     <h3>Price: {flower.price}.00 lv.</h3>
-                    <Button style={{ fontSize: '20px', marginRight: '10px' }}>
-                        <Link style={{ color: 'white' }} to={`/flowers/${flower._id}/edit`}>Edit</Link>
-                    </Button>
-                    <Button style={{ fontSize: '20px', marginRight: '10px' }} onClick={deleteFlower}>
-                        <Link style={{ color: 'white' }} to={`/flowers/${flower._id}/delete`}>Delete</Link>
-                    </Button>
-                    <Button style={{ fontSize: '20px', marginRight: '10px' }}>
-                        <Link style={{ color: 'white' }} to="/">Buy</Link>
-                    </Button>
-                    <span>People bought: 3</span>
+                    {username === flower.creator ?
+                        <>
+                            <Button style={{ fontSize: '20px', marginRight: '10px' }}>
+                                <Link style={{ color: 'white' }} to={`/flowers/${flower._id}/edit`}>Edit</Link>
+                            </Button>
+                            <Button style={{ fontSize: '20px', marginRight: '10px' }} onClick={deleteFlower}>
+                                <Link style={{ color: 'white' }} to={`/flowers/${flower._id}/delete`}>Delete</Link>
+                            </Button>
+                        </> :
+                        <>
+                            <Button style={{ fontSize: '20px', marginRight: '10px' }}>
+                                <Link style={{ color: 'white' }} to="/">Buy</Link>
+                            </Button>
+                            <span>People bought: 3</span>
+                        </>
+                    }
                 </Col>
             </Row>
 

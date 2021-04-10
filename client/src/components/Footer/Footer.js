@@ -13,7 +13,7 @@ function Footer({
     const shouldBeSticky = (!paths.includes(path)) ? true : false;
 
     return (
-        <footer className={shouldBeSticky ? 'sticky-bottom' : null}>
+        <footer className={shouldBeSticky ? 'fixed-bottom' : null}>
             <p>Kermen &copy;</p>
         </footer>
     );

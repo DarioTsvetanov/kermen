@@ -6,7 +6,7 @@ export const create = (flowerData) => {
     try {
         return axios.post(url, flowerData);
     }
-    catch(e) {
+    catch (e) {
         console.log(e.message);
     }
 }
@@ -23,7 +23,7 @@ export const update = (flowerId, flowerData) => {
     try {
         return axios.post(`${url}/flowers/${flowerId}/edit`, flowerData);
     }
-    catch(e) {
+    catch (e) {
         console.log(e.message);
     }
 }
@@ -34,7 +34,7 @@ export const deleteFlower = async (flowerId) => {
             method: 'DELETE',
         })
     }
-    catch(e) {
+    catch (e) {
         console.log(e.message);
     }
 }
