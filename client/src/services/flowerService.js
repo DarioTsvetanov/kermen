@@ -21,6 +21,7 @@ export const getOne = (id) => {
 
 export const update = (flowerId, flowerData) => {
     try {
+        console.log(flowerId, flowerData);
         return axios.post(`${url}/flowers/${flowerId}/edit`, flowerData);
     }
     catch (e) {

@@ -73,6 +73,7 @@ function Edit({
                 setErrors(oldState => ({ ...oldState, imageURL: { message: validators.imageURL(value), touched: true } }));
             }
             else {
+
                 setFlower(oldState => ({ ...oldState, imageURL: value }));
                 setErrors(oldState => ({ ...oldState, imageURL: { touched: true, message: '' } }));
             }
@@ -90,12 +91,10 @@ function Edit({
 
     const onEditProductSubmitHandler = (e) => {
         e.preventDefault();
-
-        if (errors.productName.message !== '' || errors.productName.touched === false ||
-            errors.price.message !== '' || errors.price.touched === false ||
-            errors.imageURL.message !== '' || errors.imageURL.touched === false ||
-            errors.description.message !== '' || errors.description.touched === false) return;
-
+        
+        if (errors.productName.message !== '' || errors.price.message !== '' ||
+            errors.imageURL.message !== '' || errors.description.message !== '') return;
+        
         flowerService.update(match.params.flowerId, flower)
             .then(() => {
                 history.push('/');
