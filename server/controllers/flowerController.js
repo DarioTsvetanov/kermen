@@ -13,7 +13,7 @@ router.post('/', async (req, res) => {
     }
 });
 
-router.get('/', async (req, res) => {
+router.get('/flowers/all', async (req, res) => {
     try {
         const flowers = await flowerService.getAll(req.query.currentUser);
 

@@ -12,7 +12,7 @@ export const create = (flowerData) => {
 }
 
 export const getAll = (currentUser) => {
-    return axios.get(url, { params: { currentUser } });
+    return axios.get(`${url}/flowers/all`, { params: { currentUser } });
 }
 
 export const getOne = (id) => {
